@@ -422,9 +422,7 @@ static int snd_hdspe_create(struct hdspe *hdspe)
 	if (err < 0)
 		return err;
 
-	err = pci_set_dma_mask(pci, DMA_BIT_MASK(32));
-	if (!err)
-		err = pci_set_consistent_dma_mask(pci, DMA_BIT_MASK(32));
+	err = dma_set_mask_and_coherent(&pci->dev, DMA_BIT_MASK(32));
 	if (err != 0) {
 		dev_err(card->dev, "No suitable DMA addressing support.\n");
 		return -ENODEV;
