@@ -26,10 +26,15 @@ On ubuntu:
      
 This builds the snd-hdspe.ko kernel driver in the sound/pci/hdsp/hdspe subdirectory.
 
+**Signing the driver**
+
+- On modern Linux distributions, especially when SecureBoot comes into play, you might need to sign the driver prior to trying it out or to install it. [This StackExchange post](https://unix.stackexchange.com/a/751571) explains pretty well what is to be done.
+
+**Prerequisites before trying out the driver**
+
 - You may need to blacklist the stock snd-hdspm driver as this driver targets the same devices. Create a file /usr/lib/modprobe.d/hdspe.conf with the following content:
 
         blacklist snd-hdspm
-
 
 **Trying out the driver**
 
