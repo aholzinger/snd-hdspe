@@ -50,6 +50,8 @@ or
 
 You need to stop all (audio) applications using the snd-hdspm driver before, in particular PulseAudio and the jack audio server.
 
+If you can build and load the module, but it doesn't work, check the output of `dmesg`. E.g., if in the dmesg output there are errors like `snd_hdspe: Unknown symbol snd_rawmidi_receive (err -2)` you have to load the dependencies of our module first. In the above case, execute `modprobe snd_usbmidi-lib`.
+
 When manually inserting a non-signed kernel module like this, you may need to disable secure boot in your systems BIOS.
 
 See below for how to install the kernel module using DKMS. Installing with DKMS
